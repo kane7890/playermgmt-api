@@ -11,8 +11,8 @@ class PlayersController < ApplicationController
   end
 
   def create
-
-    player = Player.new(params[:id])
+    # byebug;
+    player = Player.new(account_params)
 
     player.save
     render json: player.to_json
@@ -21,6 +21,6 @@ class PlayersController < ApplicationController
   private
 
   def account_params
-    params.require(:player).permit(:fname, :lname, :position)
+    params.require(:player).permit(:firstname, :lastname, :position)
   end
 end
